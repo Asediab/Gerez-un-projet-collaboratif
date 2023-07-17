@@ -1,4 +1,4 @@
-name: SonarCloud
+name: Main CI GitHub Actions
 on:
   push:
     branches:
@@ -79,7 +79,7 @@ jobs:
       - name: Build
         run: npm run build
       - name: Run Tests
-        run: npm test -- --watch=false --browsers=ChromeHeadless
+        run: npm test -- --watch=false --browsers=ChromeHeadless --code-coverage
       - name: SonarSource Scan
         uses: sonarsource/sonarqube-scan-action@master
         env:
