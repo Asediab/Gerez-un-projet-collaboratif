@@ -6,12 +6,13 @@ on:
   pull_request:
     types: [opened, synchronize, reopened]
 jobs:
-  build:
-    name: Build and analyze
+  back_ci:
+    name: Build and analyze Back
     runs-on: ubuntu-latest
     defaults:
       run:
         working-directory: 'back'
+
     steps:
       - uses: actions/checkout@v3
         with:
@@ -39,3 +40,39 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           SONAR_HOST_URL: ${{ secrets.SONAR_HOST }}
         run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=Asediab_Gerez-un-projet-collaboratif -Dsonar.projectName='Asediab_Gerez-un-projet-collaboratif' -Dsonar.organization=asediab
+
+
+  front_ci:
+    name: Build and analyze Front
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: 'front'
+
+    steps:
+      - uses: action/chackout@v3
+      - name: Install Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 'lts/*'
+      - name: Install Packages
+        run: npm ci
+      - name: Build
+        run: npm run build
+      - name: Run Tests
+        run: npm test --watch=false --browsers=ChromeHeadless
+      - name: SonarSource Scan
+        uses: sonarsource/sonarqube-scan-action@master
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_HOST_URL: ${{ secrets.SONAR_HOST }}
+        with:
+          projectBaseDir: front
+      - name: SonarQuality
+        uses: sonarsource/sonarqube-quality-gate-action@master
+        timeout-minutes: 5
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_HOST_URL: ${{ secrets.SONAR_HOST }}
+        with:
+          scanMetadataReportFile: front/.scannerwork/report-task.txt

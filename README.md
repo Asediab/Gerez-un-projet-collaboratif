@@ -1,3 +1,5 @@
+[![Quality gate](https://sonarcloud.io/api/project_badges/quality_gate?project=Asediab_Gerez-un-projet-collaboratif)](https://sonarcloud.io/summary/new_code?id=Asediab_Gerez-un-projet-collaboratif)
+
 # BobApp
 
 Clone project:
