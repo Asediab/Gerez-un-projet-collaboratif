@@ -43,7 +43,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.HUB_TOKEN }}  # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           SONAR_HOST_URL: ${{ secrets.SONAR_HOST }}
-        run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=Asediab_Gerez-un-projet-collaboratif -Dsonar.projectName='Asediab_Gerez-un-projet-collaboratif' -Dsonar.organization=asediab
+        run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=asediab_Gerez-un-projet-collaboratif-back -Dsonar.projectName='Asediab_Gerez-un-projet-collaboratif' -Dsonar.organization=asediab
       - name: SonarQuality
         uses: sonarsource/sonarqube-quality-gate-action@master
         timeout-minutes: 5
