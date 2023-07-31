@@ -105,7 +105,8 @@ jobs:
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN_FRONT }}
           SONAR_HOST_URL: ${{ secrets.SONAR_HOST }}
-
+        with:
+          scanMetadataReportFile: front/.scannerwork/report-task.txt
 
   back-docker:
     name: Back to Docker Hub
