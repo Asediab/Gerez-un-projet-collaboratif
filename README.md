@@ -1,5 +1,10 @@
-[![Quality gate](https://sonarcloud.io/api/project_badges/quality_gate?project=Asediab_Gerez-un-projet-collaboratif)](https://sonarcloud.io/summary/new_code?id=Asediab_Gerez-un-projet-collaboratif)
+Back  
+[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=asediab_Gerez-un-projet-collaboratif-back&metric=coverage)](https://sonarcloud.io/summary/new_code?id=asediab_Gerez-un-projet-collaboratif-back)  
+[![Quality gate](https://sonarcloud.io/api/project_badges/quality_gate?project=asediab_Gerez-un-projet-collaboratif-back)](https://sonarcloud.io/summary/new_code?id=asediab_Gerez-un-projet-collaboratif-back)  
 
+Front   
+[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=asediab_Gerez-un-projet-collaboratif-front&metric=coverage)](https://sonarcloud.io/summary/new_code?id=asediab_Gerez-un-projet-collaboratif-front)  
+[![Quality gate](https://sonarcloud.io/api/project_badges/quality_gate?project=asediab_Gerez-un-projet-collaboratif-front)](https://sonarcloud.io/summary/new_code?id=asediab_Gerez-un-projet-collaboratif-front)
 # BobApp
 
 Clone project:
