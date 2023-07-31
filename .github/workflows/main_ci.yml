@@ -81,19 +81,14 @@ jobs:
         run: npm run build
       - name: Run Tests
         run: npm test -- --watch=false --browsers=ChromeHeadless --code-coverage
-      - name: Upload Karma coverage report
-        uses: actions/upload-artifact@v2
-        with:
-          name: ubuntu-11-front-karma-report
-          path: ./front/coverage/bobapp/
       - name: Cache lcov coverage report
         uses: actions/cache@v3
         with:
           path: front/coverage/bobapp/lcov.info
-          key: ubuntu-front-lcov-${{ hashFiles('front/coverage/bobapp/lcov.info') }}
-          restore-keys: ubuntu-front-lcov
+          key: ${{ runner.os }}-front-lcov-${{ hashFiles('front/coverage/bobapp/lcov.info') }}
+          restore-keys: ${{ runner.os }}-front-lcov
       - name: SonarSource Scan
-        uses: sonarsource/sonarqube-scan-action@master
+        uses: sonarsource/sonarcloud-github-action@master
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN_FRONT }}
           SONAR_HOST_URL: ${{ secrets.SONAR_HOST }}
