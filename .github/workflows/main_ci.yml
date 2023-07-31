@@ -68,7 +68,7 @@ jobs:
       - name: Install Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: 'lts/*'
+          node-version: 18
       - name: Cache SonarCloud packages
         uses: actions/cache@v3
         with:
@@ -105,8 +105,7 @@ jobs:
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN_FRONT }}
           SONAR_HOST_URL: ${{ secrets.SONAR_HOST }}
-        with:
-          scanMetadataReportFile: front/.scannerwork/report-task.txt
+
 
   back-docker:
     name: Back to Docker Hub
@@ -128,7 +127,7 @@ jobs:
           context: ./back
           file: ./back/Dockerfile
           push: true
-          tags: ${{ secrets.DOCKERHUB_USER }}/back-bobapp:latest
+          tags: ${{ secrets.DOCKERHUB_USER }}/back-proj10:latest
 
 
   front-docker:
@@ -151,4 +150,4 @@ jobs:
           context: ./front
           file: ./front/Dockerfile
           push: true
-          tags: ${{ secrets.DOCKERHUB_USER }}/front-bobapp:latest
+          tags: ${{ secrets.DOCKERHUB_USER }}/front-proj10:latest
